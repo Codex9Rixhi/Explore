@@ -48,7 +48,8 @@ async function generateItinerary({ destinationId, days, budget }) {
         activities.push({
           time: `${formatTime(13)} - ${formatTime(14)}`,
           type: 'meal',
-          title: 'Lunch',
+          title: 'Lunch Break',
+          place: 'Lunch Break',
           estimatedCost: 0
         });
         currentHour = Math.max(currentHour, 13) + 1;
@@ -88,7 +89,11 @@ async function generateItinerary({ destinationId, days, budget }) {
       activities.push({
         time: `${formatTime(currentHour)} - ${formatTime(currentHour + actualDuration)}`,
         type: 'attraction',
+        place: attr.name,
+        title: attr.name,
+        attractionId: attr._id,
         attraction: attr,
+        description: attr.description,
         estimatedCost: cost
       });
 

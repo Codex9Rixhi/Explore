@@ -73,10 +73,10 @@ const TripDetails = () => {
                     <div className="bg-white border rounded-lg p-5 shadow-sm hover:shadow transition-shadow">
                       <div className="text-sm font-bold text-blue-600 mb-1">{activity.time}</div>
                       <h3 className="text-lg font-bold text-gray-900 mb-1">
-                        {activity.type === 'meal' ? activity.title : activity.attraction?.name || 'Activity'}
+                        {activity.type === 'meal' ? (activity.title || 'Lunch Break') : (activity.attraction?.name || activity.place || activity.name || '')}
                       </h3>
-                      {activity.type !== 'meal' && activity.attraction?.description && (
-                        <p className="text-gray-600 text-sm mb-3 line-clamp-2">{activity.attraction.description}</p>
+                      {activity.type !== 'meal' && (activity.attraction?.description || activity.description) && (
+                        <p className="text-gray-600 text-sm mb-3 line-clamp-2">{activity.attraction?.description || activity.description}</p>
                       )}
                       <div className="text-sm font-medium text-gray-700">
                         {activity.estimatedCost > 0 ? `Cost: ₹${activity.estimatedCost}` : 'Cost: Free'}

@@ -20,13 +20,23 @@ const tripSchema = new mongoose.Schema(
     itinerary: [
       {
         day: Number,
+        estimatedCost: Number,
         activities: [
           {
             time: String,
             place: String,
+            title: String,
             type: {
               type: String, // 'type' is a reserved keyword in Mongoose schema if not configured as object
             },
+            attractionId: {
+              type: mongoose.Schema.Types.ObjectId,
+              ref: 'Attraction',
+            },
+            attraction: {
+              type: mongoose.Schema.Types.Mixed,
+            },
+            description: String,
             estimatedCost: Number,
             duration: Number,
           },
